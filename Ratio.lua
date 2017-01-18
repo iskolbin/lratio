@@ -1,3 +1,23 @@
+--[[ 
+ 
+ ratio -- v0.5.0 public domain Lua ratio arithmetic
+ no warranty implied; use at your own risk
+
+ author: Ilya Kolbin (iskolbin@gmail.com)
+ url: github.com/iskolbin/ratio
+
+ COMPATIBILITY
+
+ Lua 5.1, 5.2, 5.3, LuaJIT 1, 2
+
+ LICENSE
+
+ This software is dual-licensed to the public domain and under the following
+ license: you are granted a perpetual, irrevocable license to copy, modify,
+ publish, and distribute this file as you see fit.
+
+--]]
+
 local floor, ceil = math.floor, math.ceil 
 local assert, error, setmetatable = _G.assert, _G.error, _G.setmetatable
 
@@ -45,9 +65,9 @@ function Ratio.new( num, den )
 	elseif den ~= den then
 		error( 'Denominator is NaN' )
 	elseif floor( num ) ~= num then
-		error( 'Numerator is float, only integers are supported in constructor, use Ratio.parse' )
+		error( 'Numerator is not integer' )
 	elseif floor( den ) ~= den then
-		error( 'Denominator is float, only integers are supported in constructor, use Ratio.parse' )
+		error( 'Denominator is not integer' )
 	end
 
 	return make( num, den )
