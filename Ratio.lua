@@ -45,9 +45,9 @@ function Ratio.new( num, den )
 	elseif den ~= den then
 		error( 'Denominator is NaN' )
 	elseif floor( num ) ~= num then
-		error( 'Numerator is float, only integers are supported' )
+		error( 'Numerator is float, only integers are supported in constructor, use Ratio.parse' )
 	elseif floor( den ) ~= den then
-		error( 'Denominator is float, only integers are supported' )
+		error( 'Denominator is float, only integers are supported in constructor, use Ratio.parse' )
 	end
 
 	return make( num, den )
@@ -122,15 +122,16 @@ function Ratio.parse( s )
 	elseif n ~= n then
 		error( 'Parsing number is NaN' )
 	else
-		local n_ = n > 0 and n or -n
+		local positive = n > 0
+		local n_ = positive and n or -n
 		local num1, den2, den1 = n_, 1/n_, 1
 		while floor(num1) ~= num1 and floor(den2) ~= den2 do
 			num1, den2, den1 = num1 * 10, den2 * 10, den1 * 10
 		end
 		if floor(num1) == num1 then
-			return make( num1, den1 )
+			return make( positive and num1 or -num1, den1 )
 		else
-			return make( den1, den2 )
+			return make( positive and den1 or -den1, den2 )
 		end
 	end
 end
