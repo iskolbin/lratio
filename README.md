@@ -33,6 +33,10 @@ Ratio.parse( s )
 ----------------
 Parses `s` and returns new ratio. Argument could be either number or string.
 
+Ratio:tonumber()
+----------------
+Returns standart lua number representation of ratio
+
 Ratio:num()
 -----------
 Returns numerator of ratio
