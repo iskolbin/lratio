@@ -3,14 +3,14 @@ Ratio
 
 Lua naive implementation of ratio arithmetic. Motivation is simple, if you need
 fractions during your calculation there is 99% probability of encountering
-rounding errors. Only powers of 2 are precisely represented by float, i.e.
-`0.5` is exact, `0.75` is exact, but `0.1`, for example, are not. TL;DR; if you
-need absolute precision you should probably consider using ratios.
+rounding errors if you decide to use plain floats. Only powers of 2 are precisely
+represented by float, i.e.`0.5` is exact, `0.75` is exact, but `0.1`, for example, 
+is not. TL;DR; if you need absolute precision you should probably consider using 
+ratios.
 
 Limitations
 -----------
-* Internally ratio stores 2 Lua numbers in table. There are no overflow checks
-during calculations.
+* Internally ratio stores 2 Lua numbers in table. There are no overflow checks during calculations.
 * Use `Ratio.parse` with caution, while parsing something like `1/3` **should** work I cannot guarantee this on all platforms.
 
 This library defines `Ratio` class which instances have assigned metatable with
