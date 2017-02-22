@@ -11,10 +11,12 @@ Limitations
 -----------
 * Internally ratio stores 2 Lua numbers in table. There are no overflow checks
 during calculations.
-* Use `Ratio.parse` with caution, while parsing something like `1/3` **should** work I cannot guarantee this on all platforms.
+* Use `Ratio.parse` with caution, while parsing something like `1/3` **should**
+work I cannot guarantee this on all platforms.
 
 This library defines `Ratio` class which instances have assigned metatable with
-support for addition, subtraction, multiplication, division, negation.
+support for addition, subtraction, multiplication, division, negation. Comparsion
+operators are also overloaded.
 
 ```lua
 local R = require('Ratio')
@@ -48,3 +50,11 @@ Returns integral part of ratio
 Ratio:frac()
 ------------
 Returns fractional part of ratio
+
+Ratio:tonumber()
+----------------
+Return lua number as numerator divided by denominator
+
+Ratio:tointeger()
+-----------------
+Return lua number rounded towards zero

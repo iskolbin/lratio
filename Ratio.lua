@@ -1,6 +1,6 @@
---[[ 
- 
- ratio -- v0.5.0 public domain Lua ratio arithmetic
+--[[
+
+ ratio -- v0.7.0 public domain Lua ratio arithmetic
  no warranty implied; use at your own risk
 
  author: Ilya Kolbin (iskolbin@gmail.com)
@@ -18,7 +18,7 @@
 
 --]]
 
-local floor, ceil = math.floor, math.ceil 
+local floor, ceil = math.floor, math.ceil
 local assert, error, setmetatable = _G.assert, _G.error, _G.setmetatable
 
 local Ratio = {}
@@ -101,6 +101,18 @@ function Ratio:__unm()
 	return make( -self[1], self[2] )
 end
 
+function Ratio:__eq( o )
+	return self[1] == o[1] and self[2] == o[2]
+end
+
+function Ratio:__lt( o )
+	return (self[1] < o[1]) or (self[1] == o[1] and self[2] < o[2] )
+end
+
+function Ratio:__le( o )
+	return (self[1] <= o[1]) or (self[1] == o[1] and self[2] <= o[2] )
+end
+
 function Ratio:__tostring()
 	if self[1] == 0 then
 		return '0'
@@ -123,16 +135,16 @@ function Ratio:tonumber()
 	return self[1] / self[2]
 end
 
+function Ratio:tointeger()
+	return self[1] < 0 and ceil(self[1]/self[2]) or floor(self[1]/self[2])
+end
+
 function Ratio:int()
-	if self[1] < 0 then
-		return ceil(self:tonumber())
-	else
-		return floor(self:tonumber())
-	end
+	return make( self:tointeger(), 1 )
 end
 
 function Ratio:frac()
-	return self - make( self:int(), 1 )
+	return self - make( self:tointeger(), 1 )
 end
 
 function Ratio.parse( s )
