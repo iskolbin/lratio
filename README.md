@@ -1,3 +1,6 @@
+![Build Status](https://travis-ci.org/iskolbin/ratio.svg?branch=master)
+[![license](https://img.shields.io/badge/license-public%20domain-blue.svg)]()
+
 Ratio
 =====
 
