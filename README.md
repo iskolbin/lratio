@@ -1,8 +1,8 @@
 ![Build Status](https://travis-ci.org/iskolbin/ratio.svg?branch=master)
 [![license](https://img.shields.io/badge/license-public%20domain-blue.svg)]()
 
-Ratio
-=====
+Lua ratio
+=========
 
 Lua naive implementation of ratio arithmetic. Motivation is simple, if you need
 fractions during your calculation there is 99% probability of encountering
