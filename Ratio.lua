@@ -1,6 +1,6 @@
 --[[
 
- ratio -- v0.7.0 public domain Lua ratio arithmetic
+ ratio -- v0.8.0 public domain Lua ratio arithmetic
  no warranty implied; use at your own risk
 
  author: Ilya Kolbin (iskolbin@gmail.com)
@@ -28,10 +28,18 @@ Ratio.__index = Ratio
 local function gcd( a, b )
 	if a == b then
 		return a
-	elseif a > b then
-		return gcd( a - b, b )
+	elseif a > b and a % b ==0 then
+		return b
+	elseif b > a and b % a == 0 then
+		return a
 	else
-		return gcd( a, b - a )
+		local c = b
+		while b ~= 0 do
+			c = b
+			b = a % b
+			a = c
+		end
+		return c
 	end
 end
 

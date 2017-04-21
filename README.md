@@ -1,4 +1,4 @@
-![Build Status](https://travis-ci.org/iskolbin/ratio.svg?branch=master)
+[![Build Status](https://travis-ci.org/iskolbin/lratio.svg?branch=master)](https://travis-ci.org/iskolbin/lratio)
 [![license](https://img.shields.io/badge/license-public%20domain-blue.svg)]()
 
 Lua ratio
